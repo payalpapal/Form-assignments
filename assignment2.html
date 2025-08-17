@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            display: flex;
+            justify-content: center;
+            padding: 50px;
+        }
+        .form-container {
+            background: #fff;
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            width: 700px;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        h3 {
+            margin-top: 20px;
+            color: #444;
+        }
+        .grid {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .grid div {
+            flex: 1 1 30%; 
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-top: 10px;
+        }
+        input, select {
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            margin-top: 30px;
+            padding: 12px;
+            width: 100%;
+            background: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Registration Form</h2>
+        <form id="registrationForm">
+
+          
+            <h3>Personal Details</h3>
+            <div class="grid">
+                <div>
+                    <label for="fullname">Full Name:</label>
+                    <input type="text" id="fullname" name="fullname" placeholder="Enter Your Full Name" required>
+                </div>
+                <div>
+                    <label for="dob">Date of Birth:</label>
+                    <input type="text" id="dob" name="dob" placeholder="Enter Date Of Birth" required>
+                </div>
+                <div>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Enter Your email" required>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div>
+                    <label for="mobile">Mobile Number:</label>
+                    <input type="tel" id="mobile" name="mobile" pattern="[0-9]{10}" placeholder="10-digit number" required>
+                </div>
+                <div>
+                    <label for="gender">Gender:</label>
+                    <select id="gender" name="gender" required>
+                        <option value="">Select Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="occupation">Occupation:</label>
+                    <input type="text" id="occupation" name="occupation" placeholder="your Occupation" required>
+                </div>
+            </div>
+
+           
+            <h3>Identity Details</h3>
+            <div class="grid">
+                <div>
+                    <label for="idType">ID Type:</label>
+                    <input type="text" id="idType" name="idType" placeholder="Enter ID Type" required>
+                </div>
+                <div>
+                    <label for="idNumber">ID Number:</label>
+                    <input type="text" id="idNumber" name="idNumber" placeholder="Enter ID Number" required>
+                </div>
+                <div>
+                    <label for="issueAuthority">Issue Authority:</label>
+                    <input type="text" id="issueAuthority" name="issueAuthority" placeholder="Enter ID Issue Department" required>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div>
+                    <label for="issueDate">Issue Date:</label>
+                    <input type="text" id="issueDate" name="issueDate" placeholder="Enter ID Issue Date" required>
+                </div>
+                <div>
+                    <label for="issueState">Issue State:</label>
+                    <input type="text" id="issueState" name="issueState" placeholder="Enter ID Issue State" required>
+                </div>
+                <div>
+                    <label for="expiryDate">Expiry Date:</label>
+                    <input type="text" id="expiryDate" name="expiryDate" placeholder="Enter ID Expiry Date" required>
+                </div>
+            </div>
+
+            <button type="submit">Next</button>
+        </form>
+    </div>
+
+    <script>
+        const form = document.getElementById('registrationForm');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const inputs = form.querySelectorAll('input, select');
+            let valid = true;
+            inputs.forEach(input => {
+                if (!input.checkValidity()) valid = false;
+            });
+
+            if(valid){
+                alert("All details filled successfully! Proceeding to next step.");
+             
+            } else {
+                alert("Please fill all details correctly.");
+            }
+        });
+    </script>
+</body>
+</html>

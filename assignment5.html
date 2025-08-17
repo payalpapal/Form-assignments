@@ -1,0 +1,189 @@
+
+<div class="page-container">
+    <div class="school-form-container">
+        <h2>School Championship Registration Form</h2>
+        <form id="schoolForm">
+            
+            
+            <div class="form-group">
+                <label>School Name:</label>
+                <input type="text" id="schoolName">
+            </div>
+
+         
+            <div class="form-group">
+                <label>Student Name:</label>
+                <div class="two-inputs">
+                    <input type="text" id="studentFirst" placeholder="First Name">
+                    <input type="text" id="studentLast" placeholder="Last Name">
+                </div>
+            </div>
+
+           
+            <div class="form-group">
+                <label>Parent Name:</label>
+                <div class="two-inputs">
+                    <input type="text" id="parentFirst" placeholder="First Name">
+                    <input type="text" id="parentLast" placeholder="Last Name">
+                </div>
+            </div>
+
+           
+            <div class="form-group">
+                <label>Parent Phone:</label>
+                <input type="tel" id="parentPhone" placeholder="e.g. 9876543210">
+            </div>
+
+            
+            <div class="form-group">
+                <label>Parent Email:</label>
+                <input type="email" id="parentEmail">
+            </div>
+
+            
+            <div class="form-group">
+                <label>Preferred Sport:</label>
+                <input type="text" id="sport" placeholder="e.g. Football, Cricket, etc.">
+            </div>
+
+            
+            <div class="captcha-box">
+                <input type="checkbox" id="notRobot">
+                <label for="notRobot">I'm not a robot</label>
+                <img src="https://www.gstatic.com/recaptcha/api2/logo_48.png" alt="reCAPTCHA">
+            </div>
+
+           
+            <button class="submit-btn" type="submit">Submit</button>
+        </form>
+    </div>
+</div>
+
+<style>
+
+    .page-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: #f5f7fa; 
+        font-family: Arial, sans-serif;
+    }
+
+  
+    .school-form-container {
+        background: linear-gradient(135deg, #ffffff, #e3f2fd);
+        padding: 25px;
+        border-radius: 12px;
+        width: 400px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        border-top: 5px solid #4CAF50;
+        animation: fadeIn 0.6s ease-in-out;
+    }
+    .school-form-container h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+    }
+    .form-group {
+        margin-bottom: 15px;
+    }
+    .form-group label {
+        font-weight: bold;
+        margin-bottom: 5px;
+        display: block;
+        font-size: 14px;
+        color: #555;
+    }
+    .form-group input {
+        width: 100%;
+        padding: 10px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        font-size: 14px;
+        outline: none;
+        transition: 0.3s;
+    }
+    .form-group input:focus {
+        border-color: #4CAF50;
+        box-shadow: 0 0 5px rgba(76,175,80,0.4);
+    }
+    .two-inputs {
+        display: flex;
+        gap: 10px;
+    }
+    
+    .captcha-box {
+        display: flex;
+        align-items: center;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        padding: 10px;
+        background: #f9f9f9;
+        gap: 10px;
+        margin-bottom: 15px;
+    }
+    .captcha-box input[type="checkbox"] {
+        width: 20px;
+        height: 20px;
+    }
+    .captcha-box img {
+        margin-left: auto;
+        height: 24px;
+    }
+   
+    .submit-btn {
+        background: #4CAF50;
+        color: white;
+        padding: 10px;
+        width: 100%;
+        border: none;
+        border-radius: 6px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+    .submit-btn:hover {
+        background: #45a049;
+    }
+   
+    @keyframes fadeIn {
+        from {opacity: 0; transform: translateY(-10px);}
+        to {opacity: 1; transform: translateY(0);}
+    }
+</style>
+
+<script>
+    
+    document.getElementById("schoolForm").addEventListener("submit", function(e){
+        e.preventDefault();
+
+        let schoolName = document.getElementById("schoolName").value.trim();
+        let studentFirst = document.getElementById("studentFirst").value.trim();
+        let studentLast = document.getElementById("studentLast").value.trim();
+        let parentFirst = document.getElementById("parentFirst").value.trim();
+        let parentLast = document.getElementById("parentLast").value.trim();
+        let parentPhone = document.getElementById("parentPhone").value.trim();
+        let parentEmail = document.getElementById("parentEmail").value.trim();
+        let sport = document.getElementById("sport").value.trim();
+        let notRobot = document.getElementById("notRobot").checked;
+
+        if(!schoolName || !studentFirst || !studentLast || !parentFirst || !parentLast || !parentPhone || !parentEmail || !sport){
+            alert("Please fill in all fields.");
+            return;
+        }
+        if(!/^[0-9]{10}$/.test(parentPhone)){
+            alert("Enter a valid 10-digit phone number.");
+            return;
+        }
+        if(!/\S+@\S+\.\S+/.test(parentEmail)){
+            alert("Enter a valid email.");
+            return;
+        }
+        if(!notRobot){
+            alert("Please verify that you are not a robot.");
+            return;
+        }
+        alert("School Championship Registration submitted successfully!");
+    });
+</script>
